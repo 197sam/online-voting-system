@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote space</title>
+    <link rel="icon" type="image/png" href="online-voting (1).png" style="width: 70%;height: 70%;" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Blue Header Background */
+        .navbar-custom {
+            background-color: #e29a9ad9;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: white;
+        }
+        .navbar-custom .nav-link.btn-primary {
+            color: rgb(239, 230, 230) !important;
+        }
+
+        /* Login and Sign-Up Buttons */
+        .nav-link.btn-primary {
+            background-color: transparent;
+            color: rgb(247, 240, 240);
+            border: 2px solid rgb(255, 255, 255);
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-link.btn-primary:hover {
+            background-color: #6db1b1e8;
+            color: rgb(247, 242, 242);
+            transform: scale(1.05);
+        }
+
+        /* Background Image */
+        body {
+            background-image: url('footer-background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            color: rgb(73, 62, 62);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .icon-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-label img {
+            height: 30px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="online-voting (1).png" alt="Logo" style="height: 40px;"> <!-- Main Logo -->
+            <h1 class="ml-2 mb-0">VoteSpace</h1>
+        </a>
+        <div class="ml-4 icon-label">
+            <a class="navbar-brand d-flex align-items-center" href="#" title="Home">
+                <img src="home.png" alt="Home Icon"> <!-- Home Icon -->
+                <h4 class="mb-0">Home</h4>
+            </a>
+        </div>
+        <div class="ml-4 icon-label">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="dashboard.png" alt="Dashboard Icon" style="height: 30px;"> <!-- Dashboard Icon -->
+            <h4 class="ml-2 mb-0">Dashboard</h4>
+        </a>
+    </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary text-white" href="login.html">Login</a>
+                </li>&nbsp;&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary text-white" href="signup.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main Content Placeholder -->
+    <!--<div class="container my-5">
+        <h1>Welcome to the Online Voting System</h1>
+        <p>Secure, reliable, and efficient online voting.</p>
+    </div>-->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3" style="margin-top: 65%;">
+        <div class="container">
+            <p>&copy; 2025 Online Voting System. All rights reserved.</p>
+            <p>
+                <a href="about.html" class="text-white">About Us</a> | 
+                <a href="contact.html" class="text-white">Contact</a> | 
+                <a href="privacy.html" class="text-white">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="LoginPage.js">Login</script>
+</body>
+</html> place the home logo properly

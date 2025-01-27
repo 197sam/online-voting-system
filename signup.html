@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup - Online Voting System</title>
+  <link rel="icon" type="image/png" href="online-voting (1).png" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('signup.jpg');
+      background-size: 1100px 1100px;
+      background-position: center;
+      background-attachment: scroll, local;
+      color: black;
+    }
+    .google-signin {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+
+  <!-- Google Identity Services Library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="card p-5 shadow-lg" style="max-width: 500px; width: 100%;">
+      <h2 class="text-center mb-4">Signup</h2>
+      <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group mb-3">
+          <label for="fullName">Full Name</label>
+          <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+        </div>
+        <div class="form-group mb-4">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Signup</button>
+      </form>
+
+      <!-- Google Sign-In Button -->
+      <div class="google-signin">
+        <div id="googleSignInButton"></div>
+      </div>
+
+      <p class="text-center mt-3">
+        Already have an account? <a href="login.html">Login here</a>.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Your Google OAuth Client ID (replace with your own)
+    const CLIENT_ID = '899726109475-lc2s1kbg8qdid82rvqi2ic4h7nkrfeqm.apps.googleusercontent.com'; 
+
+    // Initialize the Google Sign-In button
+    function handleCredentialResponse(response) {
+      // The response contains the Google ID token, you can use this to authenticate users
+      const id_token = response.credential;
+      console.log('Google ID Token:', id_token);
+
+      // Decode the token and log the user info (you can send this to your server for further validation)
+      const user = parseJwt(id_token);
+      alert(`Welcome, ${user.name}!`);
+
+      console.log('User Info:', user);
+    }
+
+    function parseJwt(token) {
+      // Decode the JWT token (just for display purposes)
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+    }
+
+    // Initialize the Google Sign-In button when the page loads
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: CLIENT_ID,
+        callback: handleCredentialResponse,
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("googleSignInButton"), 
+        { theme: "outline", size: "large" }  // Customize the button
+      );
+    };
+
+    // Handle the form submission for manual signup
+    function handleSignup(event) {
+      event.preventDefault();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+      } else {
+        alert("Signup successful!"); // Replace with backend signup logic
+      }
+    }
+  </script>
+</body>
+</html>

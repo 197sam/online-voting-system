@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Online Voting System</title>
+    <link rel="icon" type="image/png" href="online-voting (1).png" />
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Full-page background image */
+        body {
+            background-image: url('background-image.jpg');  /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: rgb(33, 26, 26);
+            background-color: #e29a9ad9; /* Ensure text is readable */
+            margin: 0;
+            height: 100vh; /* Full viewport height */
+        }
+
+        /* Centering and right-aligning the card */
+        .d-flex {
+            height: 100vh; /* Ensure full viewport height */
+            justify-content: flex-end; /* Align content to the right */
+            align-items: center; /* Vertically center the card */
+        }
+
+        /* Card styling with transparency, curved borders, and box shadow */
+        .card {
+            width: 400px; /* Increased width */
+            height: 400px; /* Increased height */
+            border-radius: 15px; /* Curved borders */
+            background: rgba(33, 31, 31, 0.7); /* Pale pink and semi-transparent */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Soft box shadow */
+            padding: 30px;
+            color: rgb(240, 234, 234); /* Text color */
+            position: relative; /* For positioning the logo */
+            margin-right: 15%;
+        }
+
+        /* Home Logo in top-right corner */
+        .home-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px; /* Size of the logo */
+            height: 30px;
+            
+        }
+        .home-logo:hover{
+            background-color: rgb(205, 188, 188);
+            border-radius: 10px;
+        }
+
+        /* Heading styling */
+        .card h2 {
+            color: black; /* Black text for heading */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Button styling */
+        .btn {
+            text-transform: uppercase;
+            border-radius: 20px;
+            border: none;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background-color: rgb(227, 220, 220); /* Black button */
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: rgb(121, 179, 134); /* Lighter grey on hover */
+        }
+
+        .btn-secondary {
+            background-color: rgb(205, 188, 188); /* Grey button */
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgb(121, 179, 134); /* Darker grey on hover */
+        }
+
+        /* Links inside buttons */
+        .btn a {
+            text-decoration: none;
+            color: inherit; /* Inherit button text color */
+        }
+
+        .btn a:hover {
+            text-decoration: none;
+        }
+
+        /* Form input fields */
+        .form-control {
+            background-color: #f8f9fa; /* Light grey input field */
+            border: 1px solid #ced4da; /* Grey border */
+            color: black; /* Black text */
+        }
+
+        .form-control::placeholder {
+            color: #6c757d; /* Grey placeholder text */
+        }
+
+        /* Submit button */
+        .btn-success {
+            background-color: black; /* Black button */
+            border: none;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: grey; /* Lighter grey */
+        }
+
+        /* Spacing adjustments */
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+
+        .mb-4 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex align-items-center justify-content-end">
+        <div class="card p-5 shadow-lg">
+            <!-- Home Logo in top-right corner -->
+            <a href="ovs.html"><img src="home.png" alt="Home" class="home-logo"></a>
+
+            <h1 class="text-center mb-4">VoteSpace</h1>
+            <br><br>
+            <!-- Buttons Group -->
+            <div class="text-center">
+                <div class="mb-3">
+                    <button id="adminLogin" class="btn btn-primary w-100">
+                        <a href="admin-login.html" style="color: black;"><h4>Admin Login</h4></a>
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <button id="userLogin" class="btn btn-secondary w-100">
+                        <a href="user-login.html" style="color: black;"><h4>User Login</h4></a>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" style="display: none;">
+                <div class="form-group mb-3">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* App Container */
+.app-container {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+/* Right Side */
+.right-side {
+  width: 80%;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ff5722, #ffccbc);
+  color: black;
+  text-align: center;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px #fff;
+}

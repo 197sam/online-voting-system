@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View-Election Online Election System</title>
+    <link rel="icon" type="image/png" href="online-voting (1).png" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid black;
+            background: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        /* Home logo styles */
+        .home-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: auto;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .home-logo:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        h1 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: orange;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid black;
+        }
+
+        .sidebar button {
+            padding: 10px;
+            font-size: 16px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .sidebar button:hover {
+            background: #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
+
+        .form-section {
+            flex: 3;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-section h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        select, input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        select:hover, input[type="text"]:hover {
+            border-color: #000000;
+        }
+
+        button[type="button"]:hover, button[type="submit"]:hover {
+            background-color: #715f5f;
+        }
+
+        .results {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .winner-card {
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .winner-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .candidate-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+
+        .candidate-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .candidate-card:hover {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .candidate-card .info {
+            flex-grow: 1;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 30px;
+            border-top: 4px solid #080707;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Home Icon -->
+        <a href="ovs.html">
+            <img src="home.png" alt="Home Logo" class="home-logo">
+        </a>
+
+        <div class="sidebar">
+            <a href="addcandid.html"><button onclick="navigate('addCandidate')">Add Candidate</button></a>
+            <a href="addele.html"><button onclick="navigate('addElection')" style="width: 100%;">Add New Election</button></a>
+            <a href="viewelectionresul.html"><button onclick="navigate('viewResults')" style="width: 100%;">Election Result</button></a>
+            <a href="login.html"><button onclick="logout()">Log Out</button></a>
+        </div>
+
+        <div class="form-section">
+            <h2>Election Results</h2>
+            <label for="election-id">Select Election ID:</label>
+            <select id="election-id">
+                <option value="1">Election ID 1</option>
+                <option value="2">Election ID 2</option>
+                <option value="3">Election ID 3</option>
+                <option value="4">Election ID 4</option>
+            </select>
+            <button onclick="calculateVotes()">View Results</button>
+
+            <div class="results" id="results">
+                <!-- Dynamic results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const electionData = {
+            1: {
+                winner: "Candidate 1",
+                details: [
+                    { 
+                        name: "Candidate 1", 
+                        mobile: "9012345678", 
+                        votes: 300, 
+                        img: "file:///C:/Users/saiva/Downloads/ai-generated-7973670_1280.webp" 
+                    },
+                    { 
+                        name: "Candidate 2", 
+                        mobile: "9023456789", 
+                        votes: 200, 
+                        img: "file:///C:/Users/saiva/Downloads/ai-generated-7986206_1280.webp" 
+                    },
+                ],
+            },
+            2: {
+                winner: "Candidate 3",
+                details: [
+                    { 
+                        name: "Candidate 3", 
+                        mobile: "9034567890", 
+                        votes: 250, 
+                        img: "file:///C:/Users/saiva/Downloads/OIP.jpg" 
+                    },
+                    { 
+                        name: "Candidate 4", 
+                        mobile: "9045678901", 
+                        votes: 180, 
+                        img: "file:///C:/Users/saiva/Downloads/illustration-man-abstract-art-ai-generated_57312-1281.avif" 
+                    },
+                ],
+            },
+        };
+
+        function calculateVotes() {
+            const electionId = document.getElementById("election-id").value;
+            const resultsDiv = document.getElementById("results");
+
+            if (electionData[electionId]) {
+                const data = electionData[electionId];
+                const winnerDetails = data.details.find(candidate => candidate.name === data.winner);
+
+                resultsDiv.innerHTML = ` 
+                    <div class="winner-card">
+                        <div class="confetti" id="confetti"></div>
+                        <img src="${winnerDetails.img}" alt="${winnerDetails.name}">
+                        <h3>🎉 Winner: ${data.winner} 🎉</h3>
+                        <p><strong>Election ID:</strong> ${electionId}</p>
+                    </div>
+                    ${data.details.map(candidate => ` 
+                        <div class="candidate-card">
+                            <img src="${candidate.img}" alt="${candidate.name}">
+                            <div class="info">
+                                <p><strong>Name:</strong> ${candidate.name}</p>
+                                <p><strong>Mobile:</strong> ${candidate.mobile}</p>
+                                <p><strong>Votes:</strong> ${candidate.votes}</p>
+                            </div>
+                        </div>
+                    `).join("")}
+                `;
+
+                launchConfetti();
+            } else {
+                resultsDiv.innerHTML = `<p>No results available for Election ID ${electionId}</p>`;
+            }
+        }
+
+        function launchConfetti() {
+            const confettiSettings = { spread: 120, particleCount: 80, origin: { y: 0.5 } };
+            confetti(confettiSettings);
+        }
+
+        function navigateHome() {
+            window.location.href = 'index.html'; // Assuming the home page is index.html
+        }
+    </script>
+</body>
+</html>
